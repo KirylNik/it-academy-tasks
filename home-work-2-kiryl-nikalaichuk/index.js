@@ -4,8 +4,8 @@ let result = prioritySort(data, ['number', 'null', 'string', 'object', 'undefine
 //expected result [1, 30, 500, null, 'abc', 'firstString', {test: 'Object'}, undefined, true, true, false]
 let resultForMyFunctionSort = myPrioritySort(data, ['number', 'null', 'string', 'object', 'undefined', 'boolean']);
 
-console.log('result', result);
-console.log('result2', resultForMyFunctionSort);
+console.log('result:', result);
+console.log('resultForMyFunctionSort:', resultForMyFunctionSort);
 
 function prioritySort(array, dataPriority) {
     return array.sort(function (left, right) {
