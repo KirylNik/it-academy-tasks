@@ -120,51 +120,51 @@ describe('Test for isNull', function () {
     it('Test for isNull', function () {
         let result = isNull(null);
 
-        expect(result).toBe(true);
+        expect(result).toBeTrue;
     });
 
     it('Test for isNull (string check)', function () {
         let result = isNull('null');
 
-        expect(result).toBe(false);
+        expect(result).toBeFalse;
     });
 
     it('Test for isNull (check undefined)', function () {
         let result = isNull(undefined);
 
-        expect(result).toBe(false);
+        expect(result).toBeFalse;
     });
 
     it('Test for isNull (check NaN)', function () {
         let result = isNull(NaN);
 
-        expect(result).toBe(false);
+        expect(result).toBeFalse;
     });
 
     it('Test for isNull (check zero)', function () {
         let result = isNull(0);
 
-        expect(result).toBe(false);
+        expect(result).toBeFalse;
     });
 
     it('Test for isNull (check empty sting)', function () {
         let result = isNull('');
 
-        expect(result).toBe(false);
+        expect(result).toBeFalse;
     });
 
     it('Test for isNull (check object)', function () {
         let object = new Object;
         let result = isNull(object);
 
-        expect(result).toBe(false);
+        expect(result).toBeFalse;
     });
 
     it('Test for isNull (check for absence of arguments)', function () {
         let object = new Object;
         let result = isNull(object);
 
-        expect(result).toBe(false);
+        expect(result).toBeFalse;
     });
 });
 
@@ -210,7 +210,7 @@ describe('Test for getGreeting', function () {
 describe('Test for parseBoolean', function () {
 
     it('must return true for " TruE" string', function () {
-        expect(parseBoolean(' TruE')).toBe(true);
+        expect(parseBoolean(' TruE')).toBeTrue;
     });
 
     it('must return true for " TRUE " string', function () {
@@ -218,23 +218,23 @@ describe('Test for parseBoolean', function () {
     });
 
     it('must return true for "True      " string', function () {
-        expect(parseBoolean('True      ')).toBe(true);
+        expect(parseBoolean('True      ')).toBeTrue;
     });
 
     it('must return true for "   TRUE   " string', function () {
-        expect(parseBoolean('   TRUE   ')).toBe(true);
+        expect(parseBoolean('   TRUE   ')).toBeTrue;
     });
 
     it('must return true for "TRUE/n" string', function () {
-        expect(parseBoolean('TRUE\n')).toBe(true);
+        expect(parseBoolean('TRUE\n')).toBeTrue;
     });
 
     it('must return true for "\rTRUE" string', function () {
-        expect(parseBoolean('\rTRUE')).toBe(true);
+        expect(parseBoolean('\rTRUE')).toBeTrue;
     });
     
     it('must return true for "\TRUE\n" string', function () {
-        expect(parseBoolean('\"TRUE\n')).toBe(false);
+        expect(parseBoolean('\"TRUE\n')).toBeFalse;
     });
 });
 
