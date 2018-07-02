@@ -11,12 +11,11 @@
         return function () {
             let params = arguments;
             
-            if (!timerId) {
-                timerId = setTimeout(() => applyPayloadFunction(), delayMs);
-            } else {
+            if (timerId) {
                 clearTimeout(timerId);
-                timerId = setTimeout(() => applyPayloadFunction(), delayMs);
-            };
+            }
+
+            timerId = setTimeout(applyPayloadFunction, delayMs);
 
             function applyPayloadFunction() {
                 var result;
