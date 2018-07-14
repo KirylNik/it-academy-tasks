@@ -51,6 +51,17 @@ class User {
         return result;
     }
 
+    findAll (idArr, find = this.find) {
+        const result = [];
+
+        for (let i = 0; i < idArr.length; i++) {
+            const user = find(idArr[i]);
+            result.push(user);
+        }
+
+        return result;
+    }
+
     update (id, user) {
         this.create(id, user);
     }
@@ -76,3 +87,33 @@ class User {
         return result;
     }
 }
+
+const kirillData = {
+    name: 'Kiryl Nikalaichuk',
+    age: 26,
+    sex: 'male',
+    married: true,
+    hasChildren: 0
+};
+
+const pavelData = {
+    name: 'Pavel Ivanov',
+    age: 24,
+    sex: 'male',
+    married: false,
+    hasChildren: 0
+};
+
+const annaData = {
+    name: 'Anna Petrova',
+    age: 28,
+    sex: 'female',
+    married: true,
+    hasChildren: 1
+};
+
+const users = new User();
+
+users.create(1, kirillData);
+users.create(2, pavelData);
+users.create(3, annaData);
