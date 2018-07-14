@@ -6,32 +6,33 @@
     global.AppUtil = AppUtil;
 
     AppUtil.debounce = (payloadFunction, delayMs, callback, onError) => {
-        let timerId;
+        let timerId,
+            params;
+
+        const applyPayloadFunction = () => {
+            let result;
+
+             try {
+                result = payloadFunction.apply(null, params);
+
+                callback && callback(result);
+            } catch (err) {
+                if (onError) {
+                    onError(err);
+                } else {
+                    console.error('Error in AppUtil.debounce:', err);
+                }
+            }
+        }
 
         return (...arg) => {
-            const params = arg;
+            params = arg;
             
             if (timerId) {
                 clearTimeout(timerId);
             }
 
-            this.applyPayloadFunction = () => {
-                let result;
-
-                 try {
-                    result = payloadFunction.apply(null, params);
-
-                    callback && callback(result);
-                } catch (err) {
-                    if (onError) {
-                        onError(err);
-                    } else {
-                        console.error('Error in AppUtil.debounce:', err);
-                    }
-                }
-            }
-
-            timerId = setTimeout(this.applyPayloadFunction, delayMs);
+            timerId = setTimeout(applyPayloadFunction, delayMs);
         };
     };
 
@@ -40,34 +41,34 @@
             lastParamsApplied,
             params;
 
+        const applyPayloadFunction = () => {
+            let result;
+
+            try {
+                result = payloadFunction.apply(null, params);
+                lastParamsApplied = true;
+                params = undefined;
+
+                callback && callback(result);
+            } catch (err) {
+                if (onError) {
+                    onError(err);
+                } else {
+                    console.error('Error in AppUtil.throttle:', err);
+                }
+            }
+        }
+
         return (...arg) => {
             params = arg;
             lastParamsApplied = false;
 
-            this.applyPayloadFunction = () => {
-                let result;
-
-                try {
-                    result = payloadFunction.apply(null, params);
-                    lastParamsApplied = true;
-                    params = undefined;
-
-                    callback && callback(result);
-                } catch (err) {
-                    if (onError) {
-                        onError(err);
-                    } else {
-                        console.error('Error in AppUtil.throttle:', err);
-                    }
-                }
-            }
-
             if (intervalId === undefined) {
-                this.applyPayloadFunction();
+                applyPayloadFunction();
 
                 intervalId = setInterval(() => {
                     if (!lastParamsApplied) {
-                        this.applyPayloadFunction();
+                        applyPayloadFunction();
                     } else {
                         clearInterval(intervalId);
                         intervalId = undefined;
