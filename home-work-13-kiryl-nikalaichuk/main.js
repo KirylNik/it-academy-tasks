@@ -36,7 +36,7 @@
         return result;
     }
 
-    function addUsersElementsInContainer (arr, constainer) {
+    function addUsersElementsInContainer (arr, container) {
         const fragment = document.createDocumentFragment();
 
         arr.forEach(user => {
@@ -44,6 +44,6 @@
             fragment.append(userElem)
         });
 
-        constainer.append(fragment);
+        container.append(fragment);
     }
 })();
