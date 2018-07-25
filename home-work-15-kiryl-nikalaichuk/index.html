@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Home work 14</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 300px;
+            height: 300px;
+            border: 2px solid black;
+        }
+
+        .drag-and-drop-image {
+            width: 150px;
+            height: 150px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container-start" class="container container-left">
+        <img id="drop-elem" src="sun.png" alt="Солнышко" class="drag-and-drop-image" draggable="true">
+    </div>
+    <div id="container-finish"class="container container-right"></div>
+<script src="./main.js"></script>
+</body>
+</html>
