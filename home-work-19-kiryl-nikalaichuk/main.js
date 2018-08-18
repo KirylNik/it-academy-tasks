@@ -55,8 +55,10 @@ function throttleHandler(e) {
 
 function undoHandler(e) {
     states.undo()
+
     const prevValueName = states.get('name')
     const prevValueAge = states.get('age')
+    
     nameField.value = prevValueName
     ageField.value = prevValueAge
 }
