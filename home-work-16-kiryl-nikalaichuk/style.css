@@ -1,0 +1,17 @@
+.mainForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.field,
+.submitBotton  {
+    width: 200px;
+}
+
+.submitBotton {
+    margin-top: 20px;
+}
+
+.validationNote {
+    color: red;
+}
